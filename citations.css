@@ -615,3 +615,100 @@ body.citations-page {
     transition: none !important;
   }
 }
+
+
+.cit-chapter-index {
+  display: none;
+}
+
+.cit-dropdown-container {
+  max-width: 540px;
+  margin: 35px 0 42px;
+}
+
+.cit-dropdown-container label {
+  display: block;
+  margin-bottom: 13px;
+  color: #223A5E;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.cit-dropdown-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 60px;
+  padding: 0 19px;
+  border: 1px solid #CAD9E8;
+  border-radius: 9px;
+  background: #FFFFFF;
+  box-shadow: 0 8px 28px rgba(34,58,94,.06);
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.cit-dropdown-wrapper:hover {
+  border-color: #4E7BB6;
+}
+
+.cit-dropdown-wrapper:focus-within {
+  border-color: #4E7BB6;
+  box-shadow: 0 0 0 3px rgba(78,123,182,.12);
+}
+
+.cit-dropdown-wrapper > i:first-child {
+  color: #4E7BB6;
+  font-size: 21px;
+}
+
+.cit-dropdown-wrapper > i:last-child {
+  color: #223A5E;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.cit-dropdown-wrapper select {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding: 17px 0;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #223A5E;
+  font-family: "DM Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cit-dropdown-wrapper select option {
+  background: #FFFFFF;
+  color: #223A5E;
+  font-size: 16px;
+}
+
+.cit-dropdown-container > p {
+  margin: 13px 0 0;
+  color: #627A90;
+  font-size: 14px;
+}
+
+@media (max-width: 575px) {
+  .cit-dropdown-container {
+    max-width: 100%;
+  }
+
+  .cit-dropdown-wrapper {
+    min-height: 56px;
+    padding: 0 14px;
+  }
+
+  .cit-dropdown-wrapper select {
+    font-size: 15px;
+  }
+}
+
