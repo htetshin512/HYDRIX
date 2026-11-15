@@ -1,3 +1,11 @@
+
+/* ==========================================
+   HYDRIX / MYANMAR DRY ZONE
+   PAGE-SPECIFIC CSS ONLY
+
+   Navbar and footer use common.css.
+========================================== */
+
 :root {
   --dz-navy: #223A5E;
   --dz-midnight: #162C46;
@@ -14,6 +22,10 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 135px;
 }
+
+/* ==========================================
+   PAGE FADE-IN ANIMATION
+========================================== */
 
 body.dryzone-page {
   margin: 0;
@@ -33,6 +45,8 @@ body.dryzone-page {
     opacity: 1;
   }
 }
+
+/* MAIN CONTENT ONLY */
 
 .dryzone-page main .container {
   max-width: 1250px;
@@ -76,6 +90,10 @@ body.dryzone-page {
   letter-spacing: 1.6px;
 }
 
+/* ==========================================
+   SCROLL PROGRESS LINE
+========================================== */
+
 body.dryzone-page::before {
   content: "";
   position: fixed;
@@ -88,6 +106,11 @@ body.dryzone-page::before {
   box-shadow: 0 0 12px rgba(158,207,237,.6);
   pointer-events: none;
 }
+
+
+/* ==========================================
+   SECTION 01 / CINEMATIC HERO
+========================================== */
 
 .dz-hero {
   position: relative;
@@ -352,6 +375,11 @@ body.dryzone-page::before {
   color: #FFFFFF;
 }
 
+
+/* ==========================================
+   SECTION 02 / REGIONAL OVERVIEW
+========================================== */
+
 .dz-overview {
   background: #F5F1E9;
 }
@@ -468,6 +496,11 @@ body.dryzone-page::before {
   font-size: 12px !important;
 }
 
+
+/* ==========================================
+   SECTION 03 / INTERACTIVE ATLAS
+========================================== */
+
 .dz-atlas-section {
   background: linear-gradient(
     180deg,
@@ -532,6 +565,8 @@ body.dryzone-page::before {
   font-size: 14px;
 }
 
+/* REGION FILTERS */
+
 .dz-atlas-toolbar {
   display: flex;
   align-items: center;
@@ -590,19 +625,15 @@ body.dryzone-page::before {
   font-weight: 700;
 }
 
+/* MAP LAYOUT */
 
 .dz-atlas-layout {
   display: grid;
   grid-template-columns:
     minmax(0, 1.5fr) minmax(320px, .75fr);
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
-
-.dz-map-column {
-  align-self: start;
-}
-
 
 .dz-map-column {
   min-width: 0;
@@ -624,6 +655,8 @@ body.dryzone-page::before {
   height: 515px;
   background: #DAE5EB;
 }
+
+/* MAP FALLBACK */
 
 .dz-map-loading {
   position: absolute;
@@ -656,6 +689,8 @@ body.dryzone-page::before {
   font-size: 14px;
   line-height: 1.7;
 }
+
+/* MAP REGION KEY */
 
 .dz-map-region-key {
   display: flex;
@@ -694,6 +729,8 @@ body.dryzone-page::before {
 .key-magway {
   background: #73978E;
 }
+
+/* MAP CONTROL ROW */
 
 .dz-map-footer {
   display: flex;
@@ -736,6 +773,8 @@ body.dryzone-page::before {
   color: #172D48;
 }
 
+/* LEAFLET MAP CONTROLS */
+
 .dz-map .leaflet-container {
   font-family: "DM Sans", sans-serif;
 }
@@ -752,6 +791,8 @@ body.dryzone-page::before {
 .dz-map .leaflet-control-zoom a {
   color: #254664;
 }
+
+/* TOWN DETAIL PANEL */
 
 .dz-atlas-detail {
   min-width: 0;
@@ -871,6 +912,8 @@ body.dryzone-page::before {
   font-size: 14px;
   font-weight: 600;
 }
+
+/* RAINFALL ACCORDION */
 
 .dz-rain-toggle {
   display: flex;
@@ -1023,6 +1066,11 @@ body.dryzone-page::before {
   line-height: 1.85;
 }
 
+
+/* ==========================================
+   SECTION 04 / SEASONAL CYCLE
+========================================== */
+
 .dz-season-section {
   background: linear-gradient(
     125deg,
@@ -1153,6 +1201,11 @@ body.dryzone-page::before {
   background: #BBA787;
 }
 
+
+/* ==========================================
+   SECTION 05 / COMMUNITY IMPACTS
+========================================== */
+
 .dz-water-section {
   background: #F1F4F7;
 }
@@ -1261,6 +1314,11 @@ body.dryzone-page::before {
   font-size: 25px;
 }
 
+
+/* ==========================================
+   SECTION 06 / PREPAREDNESS
+========================================== */
+
 .dz-action-section {
   background: #DCE9F5;
 }
@@ -1359,6 +1417,11 @@ body.dryzone-page::before {
   font-size: 20px;
 }
 
+
+/* ==========================================
+   RESEARCH REFERENCES STRIP
+========================================== */
+
 .dz-source-strip {
   padding: 24px 0;
   background: #E9F0F6;
@@ -1400,6 +1463,11 @@ body.dryzone-page::before {
   color: #183B5C;
 }
 
+
+/* ==========================================
+   SCROLL REVEAL ANIMATIONS
+========================================== */
+
 .dryzone-page main .reveal {
   opacity: 1;
   transform: none;
@@ -1417,6 +1485,11 @@ body.dryzone-page::before {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+/* ==========================================
+   RESPONSIVE / TABLET
+========================================== */
 
 @media (max-width: 1100px) {
   .dz-atlas-layout {
@@ -1475,6 +1548,11 @@ body.dryzone-page::before {
     padding: 25px;
   }
 }
+
+
+/* ==========================================
+   RESPONSIVE / SMALL TABLET
+========================================== */
 
 @media (max-width: 767px) {
   .dryzone-page main .section-title {
@@ -1541,6 +1619,11 @@ body.dryzone-page::before {
     font-size: 10px;
   }
 }
+
+
+/* ==========================================
+   RESPONSIVE / MOBILE
+========================================== */
 
 @media (max-width: 575px) {
   .dryzone-page main .section-space {
@@ -1718,6 +1801,11 @@ body.dryzone-page::before {
   }
 }
 
+
+/* ==========================================
+   ACCESSIBILITY / REDUCED MOTION
+========================================== */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1749,3 +1837,43 @@ body.dryzone-page::before {
     transform: none;
   }
 }
+
+/* HYDRIX / Dry Zone redesign */
+.dz-atlas-layout{align-items:start}
+.dz-map-column{align-self:start}
+.dryzone-page main h1,.dryzone-page main h2,.dryzone-page main h3{font-family:"DM Sans",sans-serif;font-weight:700;letter-spacing:-.035em}
+.dryzone-page main p{font-size:clamp(15.5px,1.2vw,17px);line-height:1.75}
+.dryzone-page main .eyebrow,.dryzone-page main .dz-eyebrow{font-size:12px}
+.dz-hero{color:#fff;background:#172D45}
+.dz-hero>.container{max-width:none!important;padding-inline:clamp(22px,5.5vw,100px)}
+.dz-hero-stage{min-height:690px;display:flex;align-items:center;justify-content:flex-start;padding:90px 0;isolation:isolate}
+.dz-hero-stage::before{content:"";position:absolute;inset:0 calc(-1 * clamp(22px,5.5vw,100px));z-index:-1;background:linear-gradient(90deg,rgba(12,29,47,.96) 0%,rgba(15,35,55,.89) 40%,rgba(15,35,55,.36) 100%),url("images/landscape.jpg") center/cover no-repeat}
+.dz-hero-center{margin:0;align-items:flex-start;text-align:left;max-width:850px}
+.dz-hero h1{font-size:clamp(48px,6.5vw,95px);line-height:1.08;letter-spacing:-.055em;margin:25px 0}
+.dz-hero h1 em{font-style:normal;color:#C9DBF0}
+.dz-hero-center>p{font-size:clamp(17px,1.6vw,20px);line-height:1.65;margin:0;max-width:650px}
+.dz-hero-facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.dz-hero-facts span{display:flex;align-items:center;gap:9px;padding:11px 15px;border:1px solid rgba(255,255,255,.32);border-radius:8px;background:rgba(20,42,64,.52);font-size:14px}
+.dz-hero-cta{border-radius:8px;font-size:13px}
+.dz-hero-topline,.dz-hero-bottomline,.dz-hero-hint{font-size:12px}
+.dz-context-section{background:#fff}
+.dz-context-intro{max-width:760px;margin-bottom:35px}
+.dz-context-intro h2{font-size:clamp(34px,4vw,55px);line-height:1.2;margin:16px 0}
+.dz-context-intro p{color:#526A80}
+.dz-context-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.dz-context-card{padding:30px;border:1px solid #DBE5EE;border-radius:12px;background:#F8FAFC}
+.dz-context-card>i{display:block;font-size:29px;margin-bottom:22px;color:#4E7BB6}
+.dz-context-card h3{font-size:23px;line-height:1.3;margin-bottom:14px}
+.dz-context-card p{font-size:16px!important;color:#5B7185;line-height:1.75}
+.dz-context-source{margin-top:22px;color:#526A80;font-size:14px}
+.dz-context-source a{text-decoration:underline!important;color:#3E719A}
+.dz-region-dropdown{display:flex;align-items:center;gap:12px;min-width:250px;padding:0 16px;border:1px solid #C9D9E7;border-radius:9px;background:#fff;color:#4E7BB6}
+.dz-region-dropdown select{flex:1;min-width:0;padding:14px 0;appearance:none;border:0;background:transparent;color:#223A5E;font:600 15px "DM Sans",sans-serif;cursor:pointer}
+.dz-region-dropdown select:focus{outline:none}
+.dz-region-dropdown:focus-within{outline:2px solid #4E7BB6;outline-offset:3px}
+.dz-region-dropdown>i:last-child{pointer-events:none;font-size:12px}
+.dz-water-point p,.dz-action-step p,.dz-atlas-detail p{font-size:16px!important;line-height:1.75}
+.dz-rain-summary,.dz-rain-method,.dz-rain-table-details summary,.dz-map-footer>span{font-size:13px!important}
+@media(max-width:850px){.dz-context-grid{grid-template-columns:1fr}}
+@media(max-width:767px){.dz-hero-stage{min-height:610px;padding:75px 0}.dz-hero-stage::before{background-position:center,65% center}}
+@media(max-width:600px){.dz-region-dropdown{width:100%}.dz-hero h1{font-size:clamp(42px,10vw,60px)}}

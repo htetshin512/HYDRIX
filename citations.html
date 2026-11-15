@@ -105,8 +105,7 @@
 
           <p>
             Explore the research, photographs and design resources
-            connected to HYDRIX. Find references by category and
-            open the original websites directly.
+            connected to HYDRIX. Browse the full reference library and open the original websites directly.
           </p>
 
           <a href="#reference-archive" class="cit-hero-button">
@@ -134,89 +133,33 @@
 
         <div class="cit-intro">
           <span class="cit-overline">HYDRIX / SOURCE DIRECTORY</span>
-          <h2>Browse our references</h2>
+          <h2>Research library and source credits</h2>
           <p>
             Explore research, photographs and website resources
-            collected during the HYDRIX project. Select a category
-            to browse its links.
+            collected during the HYDRIX project. Use the chapter index to jump to a section or search the complete source library.
           </p>
         </div>
 
-        <div class="cit-categories" aria-label="Reference categories">
-          <button type="button" class="cit-category active"
-                  data-category="drought" aria-pressed="true">
-            Drought & Climate <span>7</span>
-          </button>
-
-          <button type="button" class="cit-category"
-                  data-category="myanmar" aria-pressed="false">
-            Myanmar & Dry Zone <span>5</span>
-          </button>
-
-          <button type="button" class="cit-category"
-                  data-category="water" aria-pressed="false">
-            Water Conservation <span>4</span>
-          </button>
-
-          <button type="button" class="cit-category"
-                  data-category="preparedness" aria-pressed="false">
-            Preparedness & Safety <span>4</span>
-          </button>
-
-          <button type="button" class="cit-category"
-                  data-category="pictures" aria-pressed="false">
-            Picture References <span>10</span>
-          </button>
-
-          <button type="button" class="cit-category"
-                  data-category="design" aria-pressed="false">
-            Design & Website Tools <span>40</span>
-          </button>
+        <nav class="cit-chapter-index" aria-label="Reference chapters">
+          <a href="#ref-drought"><span>01</span>Drought & Climate</a>
+          <a href="#ref-myanmar"><span>02</span>Myanmar's Dry Zone</a>
+          <a href="#ref-water"><span>03</span>Water Conservation</a>
+          <a href="#ref-preparedness"><span>04</span>Preparedness & Safety</a>
+          <a href="#ref-pictures"><span>05</span>Photography & Visuals</a>
+          <a href="#ref-design"><span>06</span>Design & Development</a>
+        </nav>
+        <div class="cit-chapter-search">
+          <label for="citSearch">Find a reference</label>
+          <input id="citSearch" type="search" placeholder="Search by source or publisher...">
+          <span id="citStatus" aria-live="polite"></span>
         </div>
-
-        <div class="cit-results-head">
-          <div>
-            <span class="cit-overline" id="categoryLabel">
-              RESEARCH REFERENCES
-            </span>
-            <h3 id="categoryTitle">Drought & Climate</h3>
-            <p id="categoryDescription">
-              Scientific information about drought and its impacts.
-            </p>
-          </div>
-
-          <label class="cit-search">
-            <i class="bi bi-search" aria-hidden="true"></i>
-            <input id="citSearch" type="search"
-                   placeholder="Search sources..."
-                   aria-label="Search references in this category">
-          </label>
-        </div>
-
-        <div class="cit-list-status" aria-live="polite">
-          <span id="citStatus">7 sources</span>
-          <span>
-            LINKS OPEN IN A NEW TAB
-            <i class="bi bi-box-arrow-up-right"></i>
-          </span>
-        </div>
-
-        <div class="cit-source-list" id="citSourceList"></div>
-
-        <button type="button" class="cit-more" id="citMore" hidden>
-          SHOW MORE SOURCES
-        </button>
-
-        <div class="cit-attribution" id="citPhotoNote" hidden>
+        <div class="cit-chapters" id="citSourceList"></div>
+        <div class="cit-attribution">
           <i class="bi bi-info-circle"></i>
-          <p>
-            <strong>Image credits:</strong>
-            Search pages are not individual photo citations.
-            Record the original photograph page, creator and
-            licence before using an image. The original sources
-            of all HYDRIX image files have not been established.
-          </p>
+          <p>Photography and design inspiration are separate from scientific research. Confirm original image creators and licences before reusing photographs.</p>
         </div>
+
+        
 
         <p class="cit-directory-foot">
           Include only sources you actually consulted in your final
@@ -508,133 +451,66 @@
     design: "Visual inspiration, website layouts, typography and development resources."
   };
 
-  const buttons = [
-    ...document.querySelectorAll(".cit-category")
-  ];
-
   const list = document.getElementById("citSourceList");
   const search = document.getElementById("citSearch");
-  const more = document.getElementById("citMore");
   const status = document.getElementById("citStatus");
-
-  let currentCategory = "drought";
-  let visibleLimit = 8;
-
-  function renderSources() {
+  const chapterOrder = ["drought", "myanmar", "water", "preparedness", "pictures", "design"];
+  function renderReferenceLibrary() {
     const query = search.value.trim().toLowerCase();
-
-    const matching = library[currentCategory].filter(
-      ([title, publisher]) => {
-        return (title + " " + publisher)
-          .toLowerCase()
-          .includes(query);
-      }
-    );
-
-    const visible = matching.slice(0, visibleLimit);
-
-    document.getElementById("categoryTitle").textContent =
-      categoryLabels[currentCategory];
-
-    document.getElementById("categoryDescription").textContent =
-      categoryDescriptions[currentCategory];
-
-    document.getElementById("categoryLabel").textContent =
-      currentCategory === "pictures"
-        ? "PHOTOGRAPHY & VISUALS"
-        : currentCategory === "design"
-          ? "DESIGN RESOURCES"
-          : "RESEARCH REFERENCES";
-
-    document.getElementById("citPhotoNote").hidden =
-      currentCategory !== "pictures";
-
-    status.textContent =
-      matching.length +
-      (matching.length === 1 ? " source" : " sources");
-
     list.replaceChildren();
-
-    visible.forEach(([title, publisher, url], index) => {
-      const row = document.createElement("a");
-
-      row.className = "cit-source";
-      row.href = url;
-      row.target = "_blank";
-      row.rel = "noopener noreferrer";
-      row.setAttribute(
-        "aria-label",
-        "Open " + title + " in a new tab"
+    let totalMatches = 0;
+    chapterOrder.forEach((category, chapterIndex) => {
+      const matches = library[category].filter(([title, publisher]) =>
+        (title + " " + publisher).toLowerCase().includes(query)
       );
-
-      const number = document.createElement("span");
-      number.className = "cit-source-number";
-      number.textContent = String(index + 1).padStart(2, "0");
-
-      const content = document.createElement("span");
-      content.className = "cit-source-content";
-
-      const heading = document.createElement("strong");
-      heading.textContent = title;
-
-      const publisherText = document.createElement("span");
-      publisherText.textContent = publisher;
-
-      content.append(heading, publisherText);
-
-      const arrow = document.createElement("i");
-      arrow.className = "bi bi-arrow-up-right";
-      arrow.setAttribute("aria-hidden", "true");
-
-      row.append(number, content, arrow);
-      list.append(row);
+      if (!matches.length) return;
+      totalMatches += matches.length;
+      const section = document.createElement("section");
+      section.className = "cit-chapter";
+      section.id = "ref-" + category;
+      const heading = document.createElement("div");
+      heading.className = "cit-chapter-heading";
+      const chapterNumber = document.createElement("span");
+      chapterNumber.textContent = String(chapterIndex + 1).padStart(2, "0");
+      const title = document.createElement("h3");
+      title.textContent = categoryLabels[category];
+      const description = document.createElement("p");
+      description.textContent = categoryDescriptions[category];
+      heading.append(chapterNumber, title, description);
+      section.append(heading);
+      matches.forEach(([sourceTitle, publisher, url], index) => {
+        const link = document.createElement("a");
+        link.className = "cit-chapter-source";
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        const sourceNumber = document.createElement("span");
+        sourceNumber.className = "cit-source-number";
+        sourceNumber.textContent = String(index + 1).padStart(2, "0");
+        const content = document.createElement("span");
+        content.className = "cit-source-content";
+        const name = document.createElement("strong");
+        name.textContent = sourceTitle;
+        const sourcePublisher = document.createElement("span");
+        sourcePublisher.textContent = publisher;
+        content.append(name, sourcePublisher);
+        const arrow = document.createElement("i");
+        arrow.className = "bi bi-arrow-up-right";
+        arrow.setAttribute("aria-hidden", "true");
+        link.append(sourceNumber, content, arrow);
+        section.append(link);
+      });
+      list.append(section);
     });
-
-    if (visible.length === 0) {
+    status.textContent = totalMatches + (totalMatches === 1 ? " reference" : " references");
+    if (!totalMatches) {
       const empty = document.createElement("p");
       empty.className = "cit-empty";
-      empty.textContent = "No matching sources in this category.";
+      empty.textContent = "No references matched your search.";
       list.append(empty);
     }
-
-    more.hidden = matching.length <= visibleLimit;
-    more.textContent = "SHOW MORE SOURCES (" +
-      Math.max(0, matching.length - visibleLimit) +
-      " REMAINING)";
   }
-
-  function setCategory(category) {
-    if (!library[category]) return;
-
-    currentCategory = category;
-    visibleLimit = 8;
-    search.value = "";
-
-    buttons.forEach(button => {
-      const active = button.dataset.category === category;
-      button.classList.toggle("active", active);
-      button.setAttribute("aria-pressed", String(active));
-    });
-
-    renderSources();
-  }
-
-  buttons.forEach(button => {
-    button.addEventListener("click", () => {
-      setCategory(button.dataset.category);
-    });
-  });
-
-  search.addEventListener("input", () => {
-    visibleLimit = 8;
-    renderSources();
-  });
-
-  more.addEventListener("click", () => {
-    visibleLimit += 8;
-    renderSources();
-  });
-
-  setCategory("drought");
+  search.addEventListener("input", renderReferenceLibrary);
+  renderReferenceLibrary();
   </script></body>
 </html>
