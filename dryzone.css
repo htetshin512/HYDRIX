@@ -590,13 +590,19 @@ body.dryzone-page::before {
   font-weight: 700;
 }
 
+
 .dz-atlas-layout {
   display: grid;
   grid-template-columns:
     minmax(0, 1.5fr) minmax(320px, .75fr);
   gap: 16px;
-  align-items: stretch;
+  align-items: start;
 }
+
+.dz-map-column {
+  align-self: start;
+}
+
 
 .dz-map-column {
   min-width: 0;
