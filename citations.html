@@ -446,66 +446,92 @@
     design: "Visual inspiration, website layouts, typography and development resources."
   };
 
-  const list = document.getElementById("citSourceList");
-  const search = document.getElementById("citSearch");
-  const status = document.getElementById("citStatus");
-  const chapterOrder = ["drought", "myanmar", "water", "preparedness", "pictures", "design"];
-  function renderReferenceLibrary() {
-    const query = search.value.trim().toLowerCase();
-    list.replaceChildren();
-    let totalMatches = 0;
-    chapterOrder.forEach((category, chapterIndex) => {
-      const matches = library[category].filter(([title, publisher]) =>
-        (title + " " + publisher).toLowerCase().includes(query)
-      );
-      if (!matches.length) return;
-      totalMatches += matches.length;
-      const section = document.createElement("section");
-      section.className = "cit-chapter";
-      section.id = "ref-" + category;
-      const heading = document.createElement("div");
-      heading.className = "cit-chapter-heading";
-      const chapterNumber = document.createElement("span");
-      chapterNumber.textContent = String(chapterIndex + 1).padStart(2, "0");
-      const title = document.createElement("h3");
-      title.textContent = categoryLabels[category];
-      const description = document.createElement("p");
-      description.textContent = categoryDescriptions[category];
-      heading.append(chapterNumber, title, description);
-      section.append(heading);
-      matches.forEach(([sourceTitle, publisher, url], index) => {
-        const link = document.createElement("a");
-        link.className = "cit-chapter-source";
-        link.href = url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        const sourceNumber = document.createElement("span");
-        sourceNumber.className = "cit-source-number";
-        sourceNumber.textContent = String(index + 1).padStart(2, "0");
-        const content = document.createElement("span");
-        content.className = "cit-source-content";
-        const name = document.createElement("strong");
-        name.textContent = sourceTitle;
-        const sourcePublisher = document.createElement("span");
-        sourcePublisher.textContent = publisher;
-        content.append(name, sourcePublisher);
-        const arrow = document.createElement("i");
-        arrow.className = "bi bi-arrow-up-right";
-        arrow.setAttribute("aria-hidden", "true");
-        link.append(sourceNumber, content, arrow);
-        section.append(link);
-      });
-      list.append(section);
-    });
-    status.textContent = totalMatches + (totalMatches === 1 ? " reference" : " references");
-    if (!totalMatches) {
-      const empty = document.createElement("p");
-      empty.className = "cit-empty";
-      empty.textContent = "No references matched your search.";
-      list.append(empty);
-    }
+
+const list = document.getElementById("citSourceList");
+const search = document.getElementById("citSearch");
+const status = document.getElementById("citStatus");
+const categorySelect = document.getElementById("citCategory");
+
+function renderReferenceLibrary() {
+  const category = categorySelect.value;
+  const query = search.value.trim().toLowerCase();
+
+  const sources = library[category].filter(
+    ([title, publisher]) =>
+      (title + " " + publisher)
+        .toLowerCase()
+        .includes(query)
+  );
+
+  list.replaceChildren();
+
+  status.textContent =
+    sources.length +
+    (sources.length === 1 ? " reference" : " references");
+
+  const section = document.createElement("section");
+  section.className = "cit-chapter";
+
+  const heading = document.createElement("div");
+  heading.className = "cit-chapter-heading";
+
+  const title = document.createElement("h3");
+  title.textContent = categoryLabels[category];
+
+  const description = document.createElement("p");
+  description.textContent = categoryDescriptions[category];
+
+  heading.append(title, description);
+  section.append(heading);
+
+  sources.forEach(([sourceTitle, publisher, url], index) => {
+    const link = document.createElement("a");
+    link.className = "cit-chapter-source";
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    const number = document.createElement("span");
+    number.className = "cit-source-number";
+    number.textContent = String(index + 1).padStart(2, "0");
+
+    const content = document.createElement("span");
+    content.className = "cit-source-content";
+
+    const name = document.createElement("strong");
+    name.textContent = sourceTitle;
+
+    const sourcePublisher = document.createElement("span");
+    sourcePublisher.textContent = publisher;
+
+    content.append(name, sourcePublisher);
+
+    const arrow = document.createElement("i");
+    arrow.className = "bi bi-arrow-up-right";
+    arrow.setAttribute("aria-hidden", "true");
+
+    link.append(number, content, arrow);
+    section.append(link);
+  });
+
+  if (sources.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "cit-empty";
+    empty.textContent = "No matching references found.";
+    section.append(empty);
   }
-  search.addEventListener("input", renderReferenceLibrary);
+
+  list.append(section);
+}
+
+categorySelect.addEventListener("change", () => {
+  search.value = "";
   renderReferenceLibrary();
+});
+
+search.addEventListener("input", renderReferenceLibrary);
+
+renderReferenceLibrary();
+
   </script></body>
 </html>
