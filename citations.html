@@ -65,15 +65,18 @@
   <main>
     <section class="cit-hero" aria-labelledby="cit-hero-title">
       <div class="cit-hero-image">
+        <svg class="cit-wave cit-wave-top" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 0H1440V43C1190 98 950 10 717 56C494 101 256 35 0 76Z"/>
+        </svg>
         <div class="container cit-hero-inner">
           <span class="cit-hero-kicker">
             <i class="bi bi-journal-bookmark"></i>
             HYDRIX / SOURCE DIRECTORY
           </span>
           <h1 id="cit-hero-title">Citations <em>& Credits</em></h1>
-          <p>Explore the research, photographs and website resources used in HYDRIX. Choose a category to browse its references and visit the original sources.</p>
+          <p>Explore the research, photographs and design resources connected to HYDRIX. Find references by category and open the original websites directly.</p>
           <a href="#reference-archive" class="cit-hero-button">
-            EXPLORE REFERENCES
+            BROWSE REFERENCES
             <i class="bi bi-arrow-down-right"></i>
           </a>
           <div class="cit-hero-corner">
@@ -81,55 +84,68 @@
             <span>RESEARCH<br>AND VISUALS</span>
           </div>
         </div>
+        <svg class="cit-wave cit-wave-bottom" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 54C263 4 492 96 714 54C968 8 1168 83 1440 37V110H0Z"/>
+        </svg>
       </div>
     </section>
 
     <section class="cit-directory" id="reference-archive">
       <div class="container">
         <div class="cit-intro">
-          <span class="cit-overline">HYDRIX / REFERENCE LIBRARY</span>
-          <h2>Research Sources & Credits</h2>
-          <p>Our sources are organized into six categories, including scientific research, Myanmar's Dry Zone, water conservation, preparedness, visual resources and website development tools.</p>
+          <span class="cit-overline">HYDRIX / SOURCE DIRECTORY</span>
+          <h2>Browse Our References</h2>
+          <p>Find the research, photographs and website development resources collected for HYDRIX. Select a category to view its references.</p>
         </div>
 
-        <div class="cit-library-layout">
-          <div class="cit-library-controls">
-            <div class="cit-dropdown-container">
-              <label for="citCategory">SELECT REFERENCE CATEGORY</label>
-              <div class="cit-dropdown-wrapper">
-                <i class="bi bi-journal-bookmark" aria-hidden="true"></i>
-                <select id="citCategory" aria-label="Select reference category">
-                  <option value="drought">Drought & Climate</option>
-                  <option value="myanmar">Myanmar & Dry Zone</option>
-                  <option value="water">Water Conservation</option>
-                  <option value="preparedness">Preparedness & Safety</option>
-                  <option value="pictures">Picture References</option>
-                  <option value="design">Design & Website Tools</option>
-                </select>
-                <i class="bi bi-chevron-down" aria-hidden="true"></i>
-              </div>
-              <p>Choose a category to view its references.</p>
+        <div class="cit-library-controls">
+          <div class="cit-dropdown-container">
+            <label for="citCategory">SELECT REFERENCE CATEGORY</label>
+            <div class="cit-dropdown-wrapper">
+              <i class="bi bi-journal-bookmark" aria-hidden="true"></i>
+              <select id="citCategory" aria-label="Select a reference category">
+                <option value="drought">Drought & Climate</option>
+                <option value="myanmar">Myanmar & Dry Zone</option>
+                <option value="water">Water Conservation</option>
+                <option value="preparedness">Preparedness & Safety</option>
+                <option value="pictures">Picture References</option>
+                <option value="design">Design & Website Tools</option>
+              </select>
+              <i class="bi bi-chevron-down" aria-hidden="true"></i>
             </div>
-            <div class="cit-chapter-search">
-              <label for="citSearch">SEARCH THIS CATEGORY</label>
-              <div class="cit-search-field">
-                <i class="bi bi-search" aria-hidden="true"></i>
-                <input id="citSearch" type="search" placeholder="Search sources or publishers..." autocomplete="off">
-              </div>
-            </div>
-            <div class="cit-selection-info">
-              <span id="citStatus" aria-live="polite">7 references</span>
-              <span><i class="bi bi-box-arrow-up-right"></i> Links open in a new tab</span>
+            <p>Choose a category to display its sources.</p>
+          </div>
+
+          <div class="cit-chapter-search">
+            <label for="citSearch">SEARCH REFERENCES</label>
+            <div class="cit-search-field">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <input id="citSearch" type="search" placeholder="Search titles or publishers..." autocomplete="off">
             </div>
           </div>
-          <div class="cit-chapters" id="citSourceList" aria-live="polite"></div>
         </div>
 
-        <div class="cit-attribution">
-          <i class="bi bi-info-circle"></i>
-          <p>Photography collections and design inspiration are listed separately from scientific research. Before reusing an image, verify its original creator, source and licence. Search-result pages are not individual image citations.</p>
+        <div class="cit-results-head">
+          <div>
+            <span class="cit-overline" id="categoryLabel">RESEARCH REFERENCES</span>
+            <h3 id="categoryTitle">Drought & Climate</h3>
+            <p id="categoryDescription">Scientific information about drought and its impacts.</p>
+          </div>
         </div>
-        <p class="cit-directory-foot">Only include sources you actually used in your final bibliography. Check publication details and URLs when preparing your academic references.</p>
+
+        <div class="cit-list-status" aria-live="polite">
+          <span id="citStatus">7 sources</span>
+          <span>LINKS OPEN IN A NEW TAB <i class="bi bi-box-arrow-up-right"></i></span>
+        </div>
+
+        <div class="cit-source-list" id="citSourceList"></div>
+
+        <div class="cit-attribution" id="citPhotoNote" hidden>
+          <i class="bi bi-info-circle"></i>
+          <p><strong>Image credits:</strong> Search pages are not individual photo citations. Record the original photograph page, creator and licence before using an image.</p>
+        </div>
+
+        <p class="cit-directory-foot">Include only sources you actually consulted in your final bibliography. Photo searches and design inspiration should be distinguished from scientific research.</p>
       </div>
     </section>
   </main>
@@ -142,9 +158,7 @@
           <h2>Have a question about our project?</h2>
           <p>We'd be happy to hear your questions about our research, the information on HYDRIX, or suggestions for our website.</p>
         </div>
-        <a href="contact.html" class="footer-contact-button">
-          CONTACT US <i class="bi bi-arrow-up-right"></i>
-        </a>
+        <a href="contact.html" class="footer-contact-button">CONTACT US <i class="bi bi-arrow-up-right"></i></a>
       </div>
       <div class="footer-navigation">
         <div class="footer-about">
@@ -300,51 +314,43 @@
     };
 
     const categoryDescriptions = {
-      drought: "Scientific information about drought, its causes, monitoring and impacts.",
-      myanmar: "Research about Myanmar's Central Dry Zone and regional water access.",
-      water: "Resources about water scarcity, conservation and safe water supplies.",
-      preparedness: "Drought monitoring, household preparedness and safe water storage.",
-      pictures: "Visual resource collections and photo stories. Verify image licences before use.",
-      design: "Web design inspiration, development tools and typography resources."
+      drought: "Scientific explanations of drought, its causes, monitoring and impacts.",
+      myanmar: "Research about Myanmar's Central Dry Zone and access to water.",
+      water: "Water scarcity, conservation and safe water access.",
+      preparedness: "Early monitoring, household planning and safe water storage.",
+      pictures: "Photography collections and published photo stories. Check individual image credits.",
+      design: "Visual inspiration, website layouts, typography and development resources."
     };
 
     const categorySelect = document.getElementById("citCategory");
     const search = document.getElementById("citSearch");
-    const status = document.getElementById("citStatus");
     const list = document.getElementById("citSourceList");
+    const status = document.getElementById("citStatus");
 
     function renderReferences() {
       const category = categorySelect.value;
       const query = search.value.trim().toLowerCase();
-      const sources = library[category].filter(([title, publisher]) => {
-        return (title + " " + publisher).toLowerCase().includes(query);
-      });
+      const matches = library[category].filter(([title, publisher]) =>
+        (title + " " + publisher).toLowerCase().includes(query)
+      );
 
-      status.textContent = sources.length + (sources.length === 1 ? " reference" : " references");
+      document.getElementById("categoryTitle").textContent = categoryLabels[category];
+      document.getElementById("categoryDescription").textContent = categoryDescriptions[category];
+      document.getElementById("categoryLabel").textContent =
+        category === "pictures" ? "PHOTOGRAPHY & VISUALS" :
+        category === "design" ? "DESIGN RESOURCES" : "RESEARCH REFERENCES";
+      document.getElementById("citPhotoNote").hidden = category !== "pictures";
+
+      status.textContent = matches.length + (matches.length === 1 ? " source" : " sources");
       list.replaceChildren();
 
-      const section = document.createElement("section");
-      section.className = "cit-chapter";
-
-      const heading = document.createElement("div");
-      heading.className = "cit-chapter-heading";
-
-      const title = document.createElement("h3");
-      title.textContent = categoryLabels[category];
-
-      const description = document.createElement("p");
-      description.textContent = categoryDescriptions[category];
-
-      heading.append(title, description);
-      section.append(heading);
-
-      sources.forEach(([sourceTitle, publisher, url], index) => {
+      matches.forEach(([title, publisher, url], index) => {
         const link = document.createElement("a");
-        link.className = "cit-chapter-source";
+        link.className = "cit-source";
         link.href = url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.setAttribute("aria-label", "Open " + sourceTitle + " in a new tab");
+        link.setAttribute("aria-label", "Open " + title + " in a new tab");
 
         const number = document.createElement("span");
         number.className = "cit-source-number";
@@ -354,7 +360,7 @@
         content.className = "cit-source-content";
 
         const name = document.createElement("strong");
-        name.textContent = sourceTitle;
+        name.textContent = title;
 
         const publisherText = document.createElement("span");
         publisherText.textContent = publisher;
@@ -366,17 +372,15 @@
         arrow.setAttribute("aria-hidden", "true");
 
         link.append(number, content, arrow);
-        section.append(link);
+        list.append(link);
       });
 
-      if (!sources.length) {
+      if (!matches.length) {
         const empty = document.createElement("p");
         empty.className = "cit-empty";
-        empty.textContent = "No references found in this category.";
-        section.append(empty);
+        empty.textContent = "No matching references in this category.";
+        list.append(empty);
       }
-
-      list.append(section);
     }
 
     categorySelect.addEventListener("change", () => {
@@ -385,7 +389,6 @@
     });
 
     search.addEventListener("input", renderReferences);
-
     renderReferences();
   </script>
 </body>
