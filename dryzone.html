@@ -1,79 +1,53 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#162C46">
-  <meta name="description" content="Explore Myanmar's Central Dry Zone, rainfall patterns, water scarcity and drought preparedness.">
-
+  <meta name="description" content="Explore Myanmar's Central Dry Zone, historical rainfall, water shortages and drought preparedness.">
   <title>Myanmar's Dry Zone | HYDRIX</title>
-
   <link rel="icon" href="images/logo.png" type="image/png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="common.css">
-
   <link rel="stylesheet" href="dryzone.css">
 </head>
-
 <body class="dryzone-page">
-
   <header class="site-header">
     <div class="nav-top">
       <div class="container nav-top-inner">
         <div class="social-links">
-          <a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@dreamworld_090?_r=1&amp;_t=ZN-9BPxIyuVe5u" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-          <a target="_blank" rel="noopener noreferrer" href="https://discord.com/users/1201566254318759983" aria-label="Discord"><i class="bi bi-discord"></i></a>
-          <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/win.lae.may.901302?mibextid=wwXIfr&amp;mibextid=wwXIfr" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-          <a target="_blank" rel="noopener noreferrer" href="https://t.me/sleep_dreamer1" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+          <a href="https://www.tiktok.com/@dreamworld_090?_r=1&amp;_t=ZN-9BPxIyuVe5u" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          <a href="https://discord.com/users/1201566254318759983" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="bi bi-discord"></i></a>
+          <a href="https://www.facebook.com/win.lae.may.901302?mibextid=wwXIfr&amp;mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://t.me/sleep_dreamer1" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
         </div>
-
         <a href="index.html" class="brand">
           <img src="images/logo.png" alt="HYDRIX logo" class="navbar-logo">
           <span>HYDRIX</span>
         </a>
-
         <div class="header-tools">
           <div class="search-wrap" role="search">
             <div class="search-box">
               <i class="bi bi-search"></i>
-              <input
-                type="search"
-                class="search-input"
-                placeholder="Search HYDRIX..."
-                aria-label="Search HYDRIX pages"
-                autocomplete="off"
-              >
-              <button type="button" class="search-clear" aria-label="Clear search">
-                <i class="bi bi-x"></i>
-              </button>
+              <input type="search" class="search-input" placeholder="Search HYDRIX..." aria-label="Search HYDRIX pages" autocomplete="off">
+              <button type="button" class="search-clear" aria-label="Clear search"><i class="bi bi-x"></i></button>
             </div>
             <div class="search-menu"></div>
           </div>
-
           <a href="contact.html" class="contact-btn">CONTACT US</a>
         </div>
       </div>
     </div>
-
     <div class="nav-bottom">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <button
-            class="navbar-toggler mx-auto"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainMenu"
-            aria-controls="mainMenu"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
           <div class="collapse navbar-collapse" id="mainMenu">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
@@ -91,73 +65,98 @@
   </header>
 
   <main>
-
     <section class="dz-hero" id="top" aria-labelledby="dzHeroTitle">
       <div class="container">
-        <div class="dz-hero-topline"><span>HYDRIX / CENTRAL MYANMAR</span><span>CENTRAL DRY ZONE RESEARCH</span></div>
+        <div class="dz-hero-topline">
+          <span><i class="bi bi-circle-fill"></i> HYDRIX JOURNAL / 03</span>
+          <span>MYANMAR · WATER · ENVIRONMENT</span>
+        </div>
         <div class="dz-hero-stage">
           <div class="dz-hero-center">
-            <span class="dz-hero-kicker"><i class="bi bi-geo-alt"></i> MYANMAR'S CENTRAL DRY ZONE</span>
-            <h1 id="dzHeroTitle">Understanding Myanmar's<br><em>Central Dry Zone</em></h1>
-            <p>Learn about water supply challenges in Central Myanmar, explore nine reference towns and compare historical rainfall. This guide explains why preparedness and water conservation matter for local communities.</p>
-            <div class="dz-hero-facts" aria-label="Page topics">
-              <span><i class="bi bi-geo-alt"></i> 3 regions</span>
-              <span><i class="bi bi-pin-map"></i> 9 reference towns</span>
-              <span><i class="bi bi-bar-chart-line"></i> 1991–2020 rainfall</span>
+            <span class="dz-hero-kicker">
+              <i class="bi bi-droplet-half"></i>
+              THE CENTRAL DRY ZONE
+            </span>
+            <h1 id="dzHeroTitle">
+              The land<br>
+              between <em>rains.</em>
+            </h1>
+            <p>
+              Explore the landscapes, seasonal rainfall and water challenges
+              affecting communities in Myanmar's Central Dry Zone.
+            </p>
+            <div class="dz-hero-topics">
+              <span>EXPLORE BY REGION</span>
+              <nav class="dz-hero-regions" aria-label="Explore by region">
+                <a href="#atlas" data-hero-region="sagaing">
+                  Sagaing <i class="bi bi-arrow-up-right"></i>
+                </a>
+                <a href="#atlas" data-hero-region="mandalay">
+                  Mandalay <i class="bi bi-arrow-up-right"></i>
+                </a>
+                <a href="#atlas" data-hero-region="magway">
+                  Magway <i class="bi bi-arrow-up-right"></i>
+                </a>
+              </nav>
             </div>
-            <a href="#atlas" class="dz-hero-cta">EXPLORE INTERACTIVE MAP <i class="bi bi-arrow-down-right"></i></a>
-            <span class="dz-hero-hint">Research data from NASA POWER · Not real-time alerts</span>
+            <a href="#atlas" class="dz-hero-cta">
+              DISCOVER THE ATLAS
+              <i class="bi bi-arrow-down"></i>
+            </a>
+            <span class="dz-hero-hint">
+              9 REFERENCE TOWNS · 3 REGIONS · HISTORICAL RAINFALL
+            </span>
           </div>
         </div>
-        <div class="dz-hero-bottomline"><span>AN EDUCATIONAL RESEARCH PROJECT</span><a href="#overview">ABOUT THE REGION <i class="bi bi-arrow-down"></i></a></div>
+        <div class="dz-hero-bottomline">
+          <span>AN EDUCATIONAL EXPLORATION — NOT A LIVE DROUGHT MAP</span>
+          <a href="#overview">
+            LEARN ABOUT THE REGION
+            <i class="bi bi-arrow-down"></i>
+          </a>
+        </div>
       </div>
     </section>
 
     <section class="dz-overview section-space" id="overview">
       <div class="container">
         <div class="row g-5 align-items-center">
-
           <div class="col-lg-7 reveal">
             <span class="eyebrow">01 / THE REGIONAL CONTEXT</span>
-
-            <h2 class="section-title mt-3">
-              Where Is the Central Dry Zone?
-            </h2>
-
+            <h2 class="section-title mt-3">Understanding Myanmar's Central Dry Zone</h2>
             <p>
-              Myanmar's Central Dry Zone is a relatively dry area in the centre of the country. It includes parts of Mandalay, Magway and lower Sagaing Regions. It is a climatic area, not a separate administrative division.
+              Myanmar's Central Dry Zone is located in the interior of the
+              country. It includes areas of Mandalay, Magway and lower Sagaing
+              Regions. These areas receive less rainfall than many other
+              parts of Myanmar.
             </p>
-
             <p>
-              The region generally receives less rain than much of Myanmar. Although monsoon rainfall supports agriculture, long dry periods and uneven rainfall may make water access difficult. Local wells, rivers, reservoirs and water storage also influence how communities manage shortages.
+              The region is not a desert. It experiences a monsoon season,
+              but its rainfall is often concentrated within a limited
+              number of months. During dry periods, communities depend on
+              stored water, wells, rivers and other available sources.
             </p>
-
-            <a
-              href="https://www.themimu.info/special-interest-region/dry-zone"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="dz-source"
-            >
+            <p>
+              Water availability differs between towns and villages.
+              Rainfall alone does not determine whether a community
+              experiences water shortages. Storage capacity, infrastructure,
+              population needs and agricultural demand also play important roles.
+            </p>
+            <a class="dz-source" href="https://www.themimu.info/special-interest-region/dry-zone" target="_blank" rel="noopener noreferrer">
               SOURCE: MYANMAR INFORMATION MANAGEMENT UNIT
               <i class="bi bi-box-arrow-up-right"></i>
             </a>
           </div>
-
           <div class="col-lg-5 reveal">
             <figure class="dz-overview-photo">
-              <img
-                src="images/landscape.jpg"
-                alt="Dry landscape representing Central Myanmar"
-                loading="lazy"
-              >
+              <img src="images/landscape.jpg" alt="Dry landscape representing Central Myanmar" loading="lazy">
               <figcaption class="dz-photo-caption">
-                <span>THE LANDSCAPE</span>
+                <span>LANDSCAPE OF THE DRY ZONE</span>
                 <i class="bi bi-arrow-up-right"></i>
               </figcaption>
             </figure>
           </div>
         </div>
-
         <div class="dz-stat-strip reveal">
           <div>
             <strong>03</strong>
@@ -165,131 +164,131 @@
           </div>
           <div>
             <strong>58</strong>
-            <span>TOWNSHIPS / MIMU<br>DRY ZONE DEFINITION</span>
+            <span>TOWNSHIPS IN THE MIMU<br>DRY ZONE DEFINITION</span>
           </div>
           <div>
             <strong>May–Oct</strong>
-            <span>GENERAL MONSOON<br>RAINFALL SEASON</span>
+            <span>GENERAL MONSOON<br>RAINFALL PERIOD</span>
           </div>
         </div>
-
         <p class="dz-stat-note">
-          Township coverage is based on MIMU's regional definition.
-          Rainfall and water access vary between locations and years.
+          Township coverage follows the MIMU regional definition. The
+          timing and amount of rainfall can vary between years and locations.
         </p>
       </div>
     </section>
 
     <section class="dz-context-section section-space" id="water-access">
       <div class="container">
-        <div class="dz-context-intro">
+        <div class="dz-context-heading reveal">
           <span class="eyebrow">WATER ACCESS IN CENTRAL MYANMAR</span>
-          <h2>Why Is Water Access Difficult?</h2>
-          <p>Low rainfall is one challenge, but access to safe water also depends on infrastructure, storage and local needs. Different communities can experience very different conditions even within the same region.</p>
+          <h2>Why Water Shortages Happen</h2>
+          <p>
+            Water shortages can develop for several reasons. Low rainfall
+            is important, but how water is collected, stored and used
+            can make a major difference to local communities.
+          </p>
         </div>
         <div class="dz-context-grid">
-          <article class="dz-context-card"><i class="bi bi-cloud-sun"></i><h3>Uneven Rainfall</h3><p>Much of the annual rain falls during the monsoon. Extended dry spells and changes in seasonal rainfall can affect farm planning and water supplies.</p></article>
-          <article class="dz-context-card"><i class="bi bi-bucket"></i><h3>Water Supply and Storage</h3><p>Reservoirs, wells, rivers and rainwater collection all play a role. When storage or infrastructure is limited, a dry period can be harder to manage.</p></article>
-          <article class="dz-context-card"><i class="bi bi-people"></i><h3>Daily Community Needs</h3><p>Homes, schools, farms and businesses rely on water for different tasks. Local preparedness plans need to consider safe drinking water and essential services.</p></article>
+          <article class="dz-context-card reveal">
+            <i class="bi bi-cloud-sun"></i>
+            <h3>Uneven Rainfall</h3>
+            <p>
+              Rainfall is concentrated in the monsoon months.
+              If rain arrives later than expected or dry spells
+              last longer, farmers and households may struggle
+              to plan their water use.
+            </p>
+          </article>
+          <article class="dz-context-card reveal">
+            <i class="bi bi-bucket"></i>
+            <h3>Water Supply and Storage</h3>
+            <p>
+              Wells, reservoirs, rivers and rainwater harvesting
+              are important water sources. Their reliability
+              depends on rainfall, maintenance, water quality
+              and local infrastructure.
+            </p>
+          </article>
+          <article class="dz-context-card reveal">
+            <i class="bi bi-people"></i>
+            <h3>Community Water Demand</h3>
+            <p>
+              Homes, schools, farms and businesses need water
+              for different activities. Communities with limited
+              supply options may face greater difficulties
+              during extended dry periods.
+            </p>
+          </article>
         </div>
-        <p class="dz-context-source">Background: <a href="https://www.themimu.info/special-interest-region/dry-zone" target="_blank" rel="noopener noreferrer">Myanmar Information Management Unit — Dry Zone</a></p>
       </div>
     </section>
 
-    <section class="dz-atlas-section section-space"
-             id="atlas"
-             aria-labelledby="atlasTitle">
-
+    <section class="dz-atlas-section section-space" id="atlas" aria-labelledby="atlasTitle">
       <div class="container">
-
         <div class="dz-atlas-heading reveal">
           <div>
             <span class="dz-eyebrow">02 / INTERACTIVE RESEARCH</span>
-            <h2 id="atlasTitle">
-              Explore Towns and Rainfall Data
-            </h2>
+            <h2 id="atlasTitle">Explore Towns and Rainfall Data</h2>
           </div>
-
           <p>
-            Explore nine reference towns across three regions.
-            Select a marker to view its geographical profile,
-            then open the seasonal rainfall chart.
+            Explore nine reference towns across Sagaing, Mandalay
+            and Magway Regions. Choose a region or town to
+            view information and compare monthly rainfall
+            estimates from 1991 to 2020.
           </p>
         </div>
-
         <div class="dz-atlas-legend reveal">
           <span><i class="bi bi-geo-alt"></i> APPROXIMATE TOWN CENTRES</span>
-          <span><i class="bi bi-cloud-rain"></i> HISTORICAL RAINFALL ESTIMATES</span>
-          <span><i class="bi bi-info-circle"></i> NOT A LIVE DROUGHT ALERT MAP</span>
+          <span><i class="bi bi-cloud-rain"></i> HISTORICAL RAINFALL DATA</span>
+          <span><i class="bi bi-info-circle"></i> NOT A LIVE DROUGHT ALERT</span>
         </div>
-
         <div class="dz-atlas-toolbar reveal">
-          <span class="dz-atlas-toolbar-label">FILTER REGION</span>
-
+          <label class="dz-atlas-toolbar-label" for="regionFilter">FILTER REGION</label>
           <div class="dz-region-dropdown">
             <i class="bi bi-funnel" aria-hidden="true"></i>
-            <select id="regionFilter" aria-label="Filter towns by region">
-              <option value="all">All Regions (9 Towns)</option>
+            <select id="regionFilter">
+              <option value="all">All Regions</option>
               <option value="sagaing">Sagaing Region</option>
               <option value="mandalay">Mandalay Region</option>
               <option value="magway">Magway Region</option>
             </select>
             <i class="bi bi-chevron-down" aria-hidden="true"></i>
           </div>
-
-          <span class="dz-atlas-total" id="atlasCount">9 locations</span>
+          <span id="atlasCount" class="dz-atlas-total">9 locations</span>
         </div>
 
         <div class="dz-atlas-layout reveal">
-
           <div class="dz-map-column">
             <div class="dz-map-wrap">
-
-              <div
-                id="dryZoneMap"
-                class="dz-map"
-                role="region"
-                aria-label="Interactive map of Myanmar's Central Dry Zone"
-              ></div>
-
+              <div id="dryZoneMap" class="dz-map" role="region" aria-label="Interactive map of Central Myanmar"></div>
               <div id="mapFallback" class="dz-map-loading" hidden>
                 <i class="bi bi-wifi-off"></i>
                 <strong>Map tiles unavailable</strong>
                 <p>
-                  Check your internet connection.
-                  You can still browse towns using the location selector.
+                  The map could not be loaded. Check your internet
+                  connection or select a town using the menu.
                 </p>
               </div>
             </div>
-
-            <div class="dz-map-region-key" aria-label="Map region colors">
+            <div class="dz-map-region-key">
               <span><i class="key-sagaing"></i> Sagaing</span>
               <span><i class="key-mandalay"></i> Mandalay</span>
               <span><i class="key-magway"></i> Magway</span>
             </div>
-
             <div class="dz-map-footer">
-              <span>
-                <i class="bi bi-cursor"></i>
-                SELECT A MARKER OR USE THE TOWN MENU
-              </span>
+              <span><i class="bi bi-cursor"></i> SELECT A MARKER OR USE THE TOWN MENU</span>
               <button type="button" id="atlasReset">
-                <i class="bi bi-arrows-angle-expand"></i>
-                RESET VIEW
+                <i class="bi bi-arrows-angle-expand"></i> RESET VIEW
               </button>
             </div>
           </div>
 
           <aside class="dz-atlas-detail" aria-labelledby="townName">
-
-            <span class="dz-detail-overline">
-              LOCATION PROFILE / <span id="townIndex">04</span>
-            </span>
-
+            <span class="dz-detail-overline">LOCATION PROFILE / <span id="townIndex">04</span></span>
             <div class="dz-detail-selector">
               <label for="townSelect">SELECT A TOWN</label>
-              <select id="townSelect" aria-label="Choose a town"></select>
-
+              <select id="townSelect" aria-label="Select a town"></select>
               <div class="dz-town-navigation">
                 <button type="button" id="townPrevious">
                   <i class="bi bi-arrow-left"></i> Previous
@@ -299,102 +298,57 @@
                 </button>
               </div>
             </div>
-
             <div class="dz-detail-head">
               <span class="dz-region-dot" id="townDot"></span>
               <span id="townRegion">Mandalay Region</span>
             </div>
-
             <h3 id="townName">Myingyan</h3>
-
-            <p id="townDescription">
-              A Central Dry Zone reference town in Mandalay Region.
-            </p>
-
+            <p id="townDescription">A reference town in Myanmar's Central Dry Zone.</p>
             <div class="dz-detail-fact">
               <span>RESEARCH FOCUS</span>
               <strong id="townFocus">Seasonal rainfall and agriculture</strong>
             </div>
-
-            <button
-              type="button"
-              class="dz-rain-toggle"
-              id="rainToggle"
-              aria-expanded="false"
-              aria-controls="rainPanel"
-            >
-              <span>
-                <i class="bi bi-bar-chart-line"></i>
-                VIEW SEASONAL RAINFALL
-              </span>
+            <button type="button" class="dz-rain-toggle" id="rainToggle" aria-expanded="false" aria-controls="rainPanel">
+              <span><i class="bi bi-bar-chart-line"></i> VIEW SEASONAL RAINFALL</span>
               <i class="bi bi-chevron-down"></i>
             </button>
-
             <div class="dz-rain-panel" id="rainPanel" hidden>
               <div class="dz-rain-head">
-                <strong>Monthly rainfall pattern</strong>
+                <strong>Monthly Rainfall Pattern</strong>
                 <span>JAN — DEC</span>
               </div>
-
               <p id="rainStatus" class="dz-rain-status" role="status">
-                Open the chart to load historical estimates.
+                Open the chart to load historical rainfall estimates.
               </p>
-
               <div id="rainVisual" hidden>
-                <svg
-                  id="rainChart"
-                  class="dz-rain-chart"
-                  viewBox="0 0 420 200"
-                  role="img"
-                  aria-label="Historical monthly rainfall chart"
-                ></svg>
-
+                <svg id="rainChart" class="dz-rain-chart" viewBox="0 0 420 200" role="img" aria-label="Historical monthly rainfall chart"></svg>
                 <p id="rainSummary" class="dz-rain-summary"></p>
-
                 <details class="dz-rain-table-details">
-                  <summary>
-                    View monthly data table
-                    <i class="bi bi-chevron-down"></i>
-                  </summary>
-
+                  <summary>View Monthly Data Table <i class="bi bi-chevron-down"></i></summary>
                   <div class="dz-rain-table-scroll">
                     <table class="dz-rain-table">
                       <thead>
-                        <tr>
-                          <th scope="col">Month</th>
-                          <th scope="col">Estimated mm</th>
-                        </tr>
+                        <tr><th scope="col">Month</th><th scope="col">Estimated mm</th></tr>
                       </thead>
                       <tbody id="rainTableBody"></tbody>
                     </table>
                   </div>
                 </details>
               </div>
-
               <p class="dz-rain-method" id="rainMethod">
-                Source:
-                <a href="https://power.larc.nasa.gov/"
-                   target="_blank"
-                   rel="noopener noreferrer">NASA POWER</a>.
-                Gridded historical estimates, not local rain-gauge
-                observations or a forecast.
+                Source: <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA POWER</a>.
+                Gridded historical estimates, not direct local rain-gauge measurements or a forecast.
               </p>
             </div>
-
           </aside>
         </div>
-
         <p class="dz-atlas-disclaimer">
-          The Dry Zone is a climatic area, not an administrative
-          region. These markers show reference towns rather
-          than exact Dry Zone boundaries. Region colors
-          identify locations only and do not indicate drought severity.
-
-          <a href="https://www.themimu.info/special-interest-region/dry-zone"
-             target="_blank"
-             rel="noopener noreferrer">
-            Dry Zone background: MIMU
-            <i class="bi bi-box-arrow-up-right"></i>
+          The Dry Zone is a climatic area, not a separate administrative
+          region. The map shows approximate reference-town locations,
+          not exact Dry Zone boundaries. Colours identify regions
+          and do not represent drought severity.
+          <a href="https://www.themimu.info/special-interest-region/dry-zone" target="_blank" rel="noopener noreferrer">
+            Dry Zone background: MIMU <i class="bi bi-box-arrow-up-right"></i>
           </a>
         </p>
       </div>
@@ -402,25 +356,19 @@
 
     <section class="dz-season-section section-space" id="climate">
       <div class="container">
-
         <div class="dz-season-head reveal">
           <div>
             <span class="dz-eyebrow">03 / SEASONS & CLIMATE</span>
-            <h2>
-              How Rainfall Changes Throughout the Year
-            </h2>
+            <h2>Rainfall Throughout the Year</h2>
           </div>
-
           <p>
-            Central Myanmar has a generally wetter monsoon
-            season from May to October and a drier period from
-            November to April. Conditions vary between years and locations.
+            Central Myanmar generally experiences a wetter
+            monsoon period from May to October and drier
+            months from November to April. This is a broad
+            seasonal pattern, not a forecast for any particular town.
           </p>
         </div>
-
-        <div class="dz-season-bar reveal"
-             role="group"
-             aria-label="Explore general rainfall seasons">
+        <div class="dz-season-bar reveal" role="group" aria-label="Explore general rainfall seasons">
           <button class="dz-month dry" type="button" data-month="0" aria-pressed="false">JAN</button>
           <button class="dz-month dry" type="button" data-month="1" aria-pressed="false">FEB</button>
           <button class="dz-month dry" type="button" data-month="2" aria-pressed="false">MAR</button>
@@ -434,88 +382,83 @@
           <button class="dz-month dry" type="button" data-month="10" aria-pressed="false">NOV</button>
           <button class="dz-month dry" type="button" data-month="11" aria-pressed="false">DEC</button>
         </div>
-
-        <p class="dz-season-feedback"
-           id="seasonFeedback"
-           role="status"
-           aria-live="polite">
-          Select a month to explore the general seasonal pattern.
+        <p id="seasonFeedback" class="dz-season-feedback" role="status" aria-live="polite">
+          Select a month to learn about its general rainfall season.
         </p>
-
         <div class="dz-season-bottom reveal">
           <span><i class="dz-key-mark wet"></i> GENERALLY WETTER</span>
           <span><i class="dz-key-mark dry"></i> GENERALLY DRIER</span>
-          <span>
-            Illustrative classification. Historical rainfall estimates
-            are available inside the Atlas.
-          </span>
+          <span>Illustrative seasons only. Town-specific historical values are in the atlas.</span>
         </div>
       </div>
     </section>
 
     <section class="dz-water-section section-space" id="challenges">
       <div class="container">
-
         <div class="dz-water-title reveal">
-          <span class="eyebrow earth-text">
-            04 / WATER & COMMUNITY LIFE
-          </span>
-
-          <h2 class="section-title mt-3">
-            How Water Shortages Affect Daily Life
-          </h2>
+          <span class="eyebrow earth-text">04 / WATER & COMMUNITY LIFE</span>
+          <h2 class="section-title mt-3">How Water Shortages Affect Communities</h2>
+          <p>
+            Water shortages can affect daily routines, farm work,
+            household spending and the local environment.
+            The impacts vary depending on access to safe water
+            and the resources available to each community.
+          </p>
         </div>
-
         <div class="dz-water-layout">
           <div class="dz-water-picture reveal">
-            <img
-              src="images/rural.jpg"
-              alt="Rural landscape and community water challenges"
-              loading="lazy"
-            >
-            <span>WATER SHAPES DAILY LIFE</span>
+            <img src="images/rural.jpg" alt="Rural landscape in Myanmar" loading="lazy">
+            <span>WATER ACCESS AND COMMUNITY LIFE</span>
           </div>
-
           <div class="dz-water-points reveal">
             <div class="dz-water-point">
               <span>01</span>
               <div>
-                <h3>Agriculture</h3>
+                <h3>Agricultural Challenges</h3>
                 <p>
-                  Farmers depend on rainfall arriving at the right time. Long dry spells can affect crop growth, planting schedules and harvests.
+                  Rain-fed crops depend on seasonal rainfall.
+                  Delayed rain or dry periods can reduce soil
+                  moisture, affect planting schedules and
+                  lead to smaller harvests.
                 </p>
               </div>
               <i class="bi bi-flower1"></i>
             </div>
-
             <div class="dz-water-point">
               <span>02</span>
               <div>
-                <h3>Household Water</h3>
+                <h3>Household Water Supply</h3>
                 <p>
-                  Families need a reliable supply of safe water for drinking, cooking, cleaning and personal hygiene. Collecting water may take more time during shortages.
+                  Families require clean water for drinking,
+                  cooking, washing and hygiene. Shortages may
+                  make collection more difficult and increase
+                  reliance on stored supplies.
                 </p>
               </div>
               <i class="bi bi-droplet"></i>
             </div>
-
             <div class="dz-water-point">
               <span>03</span>
               <div>
-                <h3>Livelihoods</h3>
+                <h3>Jobs and Local Income</h3>
                 <p>
-                  Shortages can raise water costs and reduce income from farming or small businesses that depend on a reliable water supply.
+                  Agriculture and other water-dependent work
+                  may become less reliable during dry periods.
+                  Households can face additional costs when
+                  they need alternative water sources.
                 </p>
               </div>
               <i class="bi bi-people"></i>
             </div>
-
             <div class="dz-water-point">
               <span>04</span>
               <div>
-                <h3>The Environment</h3>
+                <h3>Soil and Natural Resources</h3>
                 <p>
-                  Long dry periods can reduce soil moisture and affect vegetation, agriculture and local ecosystems.
+                  Extended dry weather can reduce soil moisture
+                  and put pressure on plants and ecosystems.
+                  Land management and water conservation
+                  help reduce some of these pressures.
                 </p>
               </div>
               <i class="bi bi-tree"></i>
@@ -527,52 +470,48 @@
 
     <section class="dz-action-section section-space" id="prepare">
       <div class="container">
-
         <div class="dz-action-heading reveal">
-          <span class="eyebrow">
-            05 / DISASTER RISK REDUCTION — BEFORE
-          </span>
-
-          <h2>
-            How Communities Can Prepare
-          </h2>
-
+          <span class="eyebrow">05 / DISASTER RISK REDUCTION — BEFORE</span>
+          <h2>Preparing Before Water Shortages</h2>
           <p>
-            No single solution can prevent drought, but practical
-            steps can help communities use water carefully and
-            prepare for shortages.
+            Drought cannot be prevented simply by saving water,
+            but households, schools and communities can take
+            practical steps before supplies become limited.
           </p>
         </div>
-
         <div class="dz-action-path reveal">
           <a href="conservation.html" class="dz-action-step">
             <span>01 / CONSERVE</span>
             <i class="bi bi-droplet"></i>
             <h3>Reduce Water Waste</h3>
-            <p>Repair leaks, use only the water you need and introduce simple water-saving habits at home and school.</p>
-            <span class="dz-action-arrow">
-              <i class="bi bi-arrow-up-right"></i>
-            </span>
+            <p>
+              Repair leaks, avoid unnecessary water use
+              and adopt efficient water-saving habits
+              at home and at school.
+            </p>
+            <span class="dz-action-arrow"><i class="bi bi-arrow-up-right"></i></span>
           </a>
-
           <a href="preparedness.html" class="dz-action-step">
             <span>02 / PREPARE</span>
             <i class="bi bi-clipboard-check"></i>
-            <h3>Prepare for Water Shortages</h3>
-            <p>Identify essential water needs, check reliable supplies and plan safe drinking-water storage before shortages occur.</p>
-            <span class="dz-action-arrow">
-              <i class="bi bi-arrow-up-right"></i>
-            </span>
+            <h3>Prepare for Shortages</h3>
+            <p>
+              Identify reliable water sources, understand
+              essential daily needs and prepare a safe
+              water-storage plan.
+            </p>
+            <span class="dz-action-arrow"><i class="bi bi-arrow-up-right"></i></span>
           </a>
-
           <a href="learning.html" class="dz-action-step">
             <span>03 / EDUCATE</span>
             <i class="bi bi-book"></i>
             <h3>Understand Drought Risks</h3>
-            <p>Learn how rainfall, water storage and demand affect communities, then share practical preparedness information.</p>
-            <span class="dz-action-arrow">
-              <i class="bi bi-arrow-up-right"></i>
-            </span>
+            <p>
+              Learn how seasonal rainfall and water access
+              affect communities, and share useful
+              preparedness information with others.
+            </p>
+            <span class="dz-action-arrow"><i class="bi bi-arrow-up-right"></i></span>
           </a>
         </div>
       </div>
@@ -581,77 +520,48 @@
     <section class="dz-source-strip">
       <div class="container">
         <span>RESEARCH REFERENCES</span>
-
         <div>
-          <a href="https://www.themimu.info/special-interest-region/dry-zone"
-             target="_blank" rel="noopener noreferrer">
+          <a href="https://www.themimu.info/special-interest-region/dry-zone" target="_blank" rel="noopener noreferrer">
             MIMU <i class="bi bi-box-arrow-up-right"></i>
           </a>
-
-          <a href="https://www.fao.org/4/ai478e/ai478e00.htm"
-             target="_blank" rel="noopener noreferrer">
+          <a href="https://www.fao.org/4/ai478e/ai478e00.htm" target="_blank" rel="noopener noreferrer">
             FAO <i class="bi bi-box-arrow-up-right"></i>
           </a>
-
-          <a href="https://www.open.edu/openlearncreate/mod/oucontent/view.php?id=156220&section=5"
-             target="_blank" rel="noopener noreferrer">
-            OPEN UNIVERSITY <i class="bi bi-box-arrow-up-right"></i>
+          <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener noreferrer">
+            NASA POWER <i class="bi bi-box-arrow-up-right"></i>
           </a>
         </div>
       </div>
     </section>
-
   </main>
 
   <footer class="footer-main">
     <div class="container">
-
       <div class="footer-contact">
         <div class="footer-contact-content">
-          <span class="footer-label">
-            <i class="bi bi-chat-left-text"></i>
-            CONTACT THE HYDRIX TEAM
-          </span>
-
+          <span class="footer-label"><i class="bi bi-chat-left-text"></i> CONTACT THE HYDRIX TEAM</span>
           <h2>Have a question about our project?</h2>
-
-          <p>
-            We'd be happy to hear your questions about our research,
-            the information on HYDRIX, or suggestions for our website.
-          </p>
+          <p>We'd be happy to hear your questions about our research, the information on HYDRIX, or suggestions for our website.</p>
         </div>
-
         <a href="contact.html" class="footer-contact-button">
-          CONTACT US
-          <i class="bi bi-arrow-up-right"></i>
+          CONTACT US <i class="bi bi-arrow-up-right"></i>
         </a>
       </div>
-
       <div class="footer-navigation">
         <div class="footer-about">
           <a href="index.html" class="footer-logo">
             <img src="images/logo.png" alt="HYDRIX logo">
             <span>HYDRIX</span>
           </a>
-
-          <p>
-            An educational website about drought, water shortages,
-            conservation and preparing communities before
-            water supplies become limited.
-          </p>
-
-          <span class="footer-project-tag">
-            DISASTER RISK REDUCTION / BEFORE
-          </span>
+          <p>An educational website about drought, water shortages, conservation and preparing communities before water supplies become limited.</p>
+          <span class="footer-project-tag">DISASTER RISK REDUCTION / BEFORE</span>
         </div>
-
         <div class="footer-links-group">
           <h3>EXPLORE</h3>
           <a href="index.html">Home</a>
           <a href="drought.html">Understanding Drought</a>
           <a href="dryzone.html">Myanmar's Dry Zone</a>
         </div>
-
         <div class="footer-links-group">
           <h3>PREPARE &amp; LEARN</h3>
           <a href="conservation.html">Water Conservation</a>
@@ -659,7 +569,6 @@
           <a href="learning.html">Interactive Learning</a>
           <a href="faq.html">FAQs</a>
         </div>
-
         <div class="footer-links-group">
           <h3>HYDRIX PROJECT</h3>
           <a href="about.html">About Us</a>
@@ -667,129 +576,90 @@
           <a href="privacy.html">Privacy Policy</a>
         </div>
       </div>
-
       <div class="footer-resources">
         <div class="footer-resources-info">
-          <span class="footer-resources-label">
-            <i class="bi bi-folder2-open"></i>
-            PROJECT RESOURCES
-          </span>
-
+          <span class="footer-resources-label"><i class="bi bi-folder2-open"></i> PROJECT RESOURCES</span>
           <p>Explore our references or download the HYDRIX report.</p>
         </div>
-
         <div class="footer-downloads">
           <a href="citations.html" class="footer-resource-button">
-            <i class="bi bi-journal-text"></i>
-            CITATION PAGE
+            <i class="bi bi-journal-text"></i> CITATION PAGE
             <i class="bi bi-arrow-up-right"></i>
           </a>
-
-          <a href="docs/HYDRIX_Report.docx"
-             class="footer-resource-button footer-resource-filled"
-             download>
-            <i class="bi bi-file-earmark-word"></i>
-            DOWNLOAD WORD FILE
+          <a href="docs/HYDRIX_Report.docx" class="footer-resource-button footer-resource-filled" download>
+            <i class="bi bi-file-earmark-word"></i> DOWNLOAD WORD FILE
             <i class="bi bi-download"></i>
           </a>
         </div>
       </div>
-
       <div class="footer-bottom">
         <span>HYDRIX / YEAR 9 ICT PBL PROJECT</span>
         <p>© 2026 HYDRIX. All Rights Reserved.</p>
       </div>
-
     </div>
   </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="search.js"></script>
-<script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="search.js"></script>
+  <script>
     (() => {
       "use strict";
 
       const towns = [
         {
-          id: "monywa",
-          name: "Monywa",
-          region: "sagaing",
-          lat: 22.1085,
-          lon: 95.1358,
+          id: "monywa", name: "Monywa", region: "sagaing",
+          lat: 22.1085, lon: 95.1358,
           focus: "Water access and agriculture",
-          description: "A reference town near the Chindwin River in lower Sagaing. Explore the relationship between seasonal rainfall and community water needs."
+          description: "Located near the Chindwin River in lower Sagaing. This reference town is useful for exploring seasonal rainfall, farming needs and access to water."
         },
         {
-          id: "shwebo",
-          name: "Shwebo",
-          region: "sagaing",
-          lat: 22.5670,
-          lon: 95.6980,
-          focus: "Rain-fed farming and seasonal water",
-          description: "A Sagaing Region reference location where seasonal weather patterns and agricultural water planning can be explored."
+          id: "shwebo", name: "Shwebo", region: "sagaing",
+          lat: 22.5670, lon: 95.6980,
+          focus: "Rain-fed farming",
+          description: "A Sagaing Region town where seasonal weather and reliable water supplies are important considerations for agricultural planning."
         },
         {
-          id: "salingyi",
-          name: "Salingyi",
-          region: "sagaing",
-          lat: 21.97182,
-          lon: 95.08036,
+          id: "salingyi", name: "Salingyi", region: "sagaing",
+          lat: 21.97182, lon: 95.08036,
           focus: "Local water availability",
-          description: "A reference town in lower Sagaing used to explore rainfall patterns and the importance of reliable water sources."
+          description: "A reference town in lower Sagaing where rainfall patterns and available water resources can be compared with nearby locations."
         },
         {
-          id: "myingyan",
-          name: "Myingyan",
-          region: "mandalay",
-          lat: 21.460024,
-          lon: 95.388403,
+          id: "myingyan", name: "Myingyan", region: "mandalay",
+          lat: 21.460024, lon: 95.388403,
           focus: "Seasonal rainfall and agriculture",
-          description: "A town in the Central Dry Zone where historical rainfall patterns help explain agricultural and household water needs."
+          description: "A town in the Central Dry Zone where historical precipitation patterns help explain agricultural and household water needs."
         },
         {
-          id: "nyaungu",
-          name: "Nyaung-U",
-          region: "mandalay",
-          lat: 21.200557,
-          lon: 94.908266,
-          focus: "Rainfall seasonality",
-          description: "A Central Myanmar reference location used to explore the contrast between wetter and drier months."
+          id: "nyaungu", name: "Nyaung-U", region: "mandalay",
+          lat: 21.200557, lon: 94.908266,
+          focus: "Monthly rainfall patterns",
+          description: "A Central Myanmar location used to compare rainfall during the monsoon period and the generally drier months."
         },
         {
-          id: "kyaukpadaung",
-          name: "Kyaukpadaung",
-          region: "mandalay",
-          lat: 20.841582,
-          lon: 95.126701,
-          focus: "Changing local conditions",
-          description: "A Mandalay Region reference town for comparing historical precipitation across the broader Dry Zone."
+          id: "kyaukpadaung", name: "Kyaukpadaung", region: "mandalay",
+          lat: 20.841582, lon: 95.126701,
+          focus: "Local rainfall variation",
+          description: "A reference town in Mandalay Region for comparing historical rainfall with other towns in Central Myanmar."
         },
         {
-          id: "pakokku",
-          name: "Pakokku",
-          region: "magway",
-          lat: 21.334886,
-          lon: 95.084381,
-          focus: "Household and farm water",
-          description: "A northern Magway Region town used to explore seasonal rainfall and the importance of water conservation."
+          id: "pakokku", name: "Pakokku", region: "magway",
+          lat: 21.334886, lon: 95.084381,
+          focus: "Household and agricultural water",
+          description: "A town in northern Magway Region where water is important for homes, farming activities and community services."
         },
         {
-          id: "chauk",
-          name: "Chauk",
-          region: "magway",
-          lat: 20.899214,
-          lon: 94.817835,
+          id: "chauk", name: "Chauk", region: "magway",
+          lat: 20.899214, lon: 94.817835,
           focus: "Dry-season preparedness",
-          description: "A Magway Region reference town highlighting historical rainfall seasonality and planning during dry periods."
+          description: "A Magway Region reference location for studying historical rainfall and the importance of planning for dry periods."
         },
         {
-          id: "magway",
-          name: "Magway",
-          region: "magway",
-          lat: 20.149557,
-          lon: 94.932464,
+          id: "magway", name: "Magway", region: "magway",
+          lat: 20.149557, lon: 94.932464,
           focus: "Community water planning",
-          description: "A regional centre used to explore historical monthly rainfall and water management."
+          description: "A regional centre where historical monthly rainfall can support discussions about water use, conservation and preparedness."
         }
       ];
 
@@ -822,7 +692,6 @@
       ];
 
       const $ = id => document.getElementById(id);
-
       const regionFilter = $("regionFilter");
       const townSelect = $("townSelect");
       const mapFallback = $("mapFallback");
@@ -856,7 +725,6 @@
 
       function fillTownSelect() {
         const visible = visibleTowns();
-
         townSelect.replaceChildren();
 
         visible.forEach(town => {
@@ -871,9 +739,7 @@
         }
 
         townSelect.value = selectedId;
-
-        atlasCount.textContent =
-          visible.length +
+        atlasCount.textContent = visible.length +
           (visible.length === 1 ? " location" : " locations");
       }
 
@@ -883,7 +749,6 @@
 
         $("townIndex").textContent =
           String(towns.indexOf(town) + 1).padStart(2, "0");
-
         $("townRegion").textContent = regionNames[town.region];
         $("townName").textContent = town.name;
         $("townDescription").textContent = town.description;
@@ -894,7 +759,6 @@
 
         markers.forEach((marker, id) => {
           const active = id === selectedId;
-
           marker.setStyle({
             radius: active ? 10 : 7,
             weight: active ? 4 : 2,
@@ -908,19 +772,14 @@
           }
         });
 
-        if (!rainPanel.hidden) {
-          loadRainfall();
-        }
+        if (!rainPanel.hidden) loadRainfall();
       }
 
       function selectTown(id, moveMap = true) {
         const town = getTown(id);
         if (!town) return;
 
-        if (
-          currentRegion !== "all" &&
-          town.region !== currentRegion
-        ) {
+        if (currentRegion !== "all" && town.region !== currentRegion) {
           filterRegion(town.region);
         }
 
@@ -937,8 +796,7 @@
       }
 
       function fitMap() {
-        if (!map || !window.L) return;
-
+        if (!map || typeof L === "undefined") return;
         const list = visibleTowns();
         if (!list.length) return;
 
@@ -955,16 +813,12 @@
 
       function filterRegion(region) {
         if (region !== "all" && !regionNames[region]) return;
-
         currentRegion = region;
-
         regionFilter.value = region;
 
         markers.forEach((marker, id) => {
           if (!map) return;
-
-          const visible =
-            region === "all" ||
+          const visible = region === "all" ||
             getTown(id).region === region;
 
           if (visible && !map.hasLayer(marker)) {
@@ -1058,7 +912,6 @@
       document.querySelectorAll("[data-hero-region]").forEach(link => {
         link.addEventListener("click", () => {
           filterRegion(link.dataset.heroRegion);
-
           requestAnimationFrame(() => {
             if (map) map.invalidateSize(false);
           });
@@ -1068,90 +921,144 @@
       function moveTown(direction) {
         const list = visibleTowns();
         if (!list.length) return;
-
         const index = list.findIndex(town => town.id === selectedId);
         const next = (index + direction + list.length) % list.length;
-
         selectTown(list[next].id);
       }
 
-      $("townPrevious").addEventListener("click", () => {
-        moveTown(-1);
-      });
-
-      $("townNext").addEventListener("click", () => {
-        moveTown(1);
-      });
+      $("townPrevious").addEventListener("click", () => moveTown(-1));
+      $("townNext").addEventListener("click", () => moveTown(1));
 
       async function requestRainfall(town) {
-  const BASE_URL = "https://power.larc.nasa.gov/api/temporal/";
-  const START_YEAR = 1991;
-  const END_YEAR = 2020;
-  const params = {
-    parameters: "PRECTOTCORR",
-    community: "AG",
-    longitude: String(town.lon),
-    latitude: String(town.lat),
-    format: "JSON",
-    start: String(START_YEAR),
-    end: String(END_YEAR)
-  };
-  async function fetchNASA(endpoint) {
-    const url = new URL(BASE_URL + endpoint);
-    url.search = new URLSearchParams(params).toString();
-    const response = await fetch(url.toString());
-    if (!response.ok) throw new Error(`NASA POWER returned HTTP ${response.status}`);
-    const json = await response.json();
-    const rainfall = json?.properties?.parameter?.PRECTOTCORR;
-    if (!rainfall || typeof rainfall !== "object") throw new Error("NASA POWER returned no rainfall data.");
-    const units = json?.parameters?.PRECTOTCORR?.units || "";
-    if (!units) throw new Error("Rainfall units are missing.");
-    return { rainfall, units: units.toLowerCase().replace(/\s/g, ""), apiUrl: url.toString() };
-  }
-  function isValid(value) {
-    return value !== null && value !== undefined && value !== "" &&
-      Number.isFinite(Number(value)) && Number(value) >= 0;
-  }
-  function convertToMonthly(value, unit, monthIndex) {
-    if (unit.includes("mm/day") || unit.includes("mm/d")) return value * monthLengths[monthIndex];
-    if (unit === "mm" || unit.includes("mm/month")) return value;
-    throw new Error("Unsupported rainfall unit: " + unit);
-  }
-  try {
-    const result = await fetchNASA("monthly/climatology/point");
-    const data = months.map((month, index) => {
-      const value = result.rainfall[month];
-      if (!isValid(value)) throw new Error("Missing climatology rainfall for " + month);
-      return convertToMonthly(Number(value), result.units, index);
-    });
-    console.info("HYDRIX: NASA climatology loaded successfully.", town.name);
-    return { data, period: "1991–2020", apiUrl: result.apiUrl };
-  } catch (error) {
-    console.warn("HYDRIX: Primary rainfall request failed.", error);
-  }
-  try {
-    const result = await fetchNASA("monthly/point");
-    const data = months.map((month, index) => {
-      const monthNumber = String(index + 1).padStart(2, "0");
-      const values = [];
-      for (let year = START_YEAR; year <= END_YEAR; year++) {
-        const key = `${year}${monthNumber}`;
-        const value = result.rainfall[key];
-        if (isValid(value)) values.push(Number(value));
+        const BASE_URL = "https://power.larc.nasa.gov/api/temporal/";
+        const START_YEAR = 1991;
+        const END_YEAR = 2020;
+
+        const params = {
+          parameters: "PRECTOTCORR",
+          community: "AG",
+          longitude: String(town.lon),
+          latitude: String(town.lat),
+          format: "JSON",
+          start: String(START_YEAR),
+          end: String(END_YEAR)
+        };
+
+        async function fetchNASA(endpoint) {
+          const url = new URL(BASE_URL + endpoint);
+          url.search = new URLSearchParams(params).toString();
+
+          const response = await fetch(url.toString());
+
+          if (!response.ok) {
+            throw new Error("NASA POWER HTTP " + response.status);
+          }
+
+          const json = await response.json();
+          const rainfall = json?.properties?.parameter?.PRECTOTCORR;
+
+          if (!rainfall || typeof rainfall !== "object") {
+            throw new Error("NASA POWER returned no rainfall data.");
+          }
+
+          const units = json?.parameters?.PRECTOTCORR?.units || "";
+
+          if (!units) {
+            throw new Error("Rainfall units are missing.");
+          }
+
+          return {
+            rainfall,
+            units: units.toLowerCase().replace(/\s/g, ""),
+            apiUrl: url.toString()
+          };
+        }
+
+        function isValid(value) {
+          return value !== null &&
+            value !== undefined &&
+            value !== "" &&
+            Number.isFinite(Number(value)) &&
+            Number(value) >= 0;
+        }
+
+        function convertToMonthly(value, unit, index) {
+          if (unit.includes("mm/day") || unit.includes("mm/d")) {
+            return value * monthLengths[index];
+          }
+
+          if (unit === "mm" || unit.includes("mm/month")) {
+            return value;
+          }
+
+          throw new Error("Unsupported rainfall unit: " + unit);
+        }
+
+        try {
+          const result = await fetchNASA("monthly/climatology/point");
+
+          const data = months.map((month, index) => {
+            const value = result.rainfall[month];
+
+            if (!isValid(value)) {
+              throw new Error("Missing rainfall for " + month);
+            }
+
+            return convertToMonthly(
+              Number(value),
+              result.units,
+              index
+            );
+          });
+
+          return {
+            data,
+            period: "1991–2020",
+            apiUrl: result.apiUrl
+          };
+        } catch (primaryError) {
+          console.warn("HYDRIX climatology request failed:", primaryError);
+        }
+
+        try {
+          const result = await fetchNASA("monthly/point");
+
+          const data = months.map((month, index) => {
+            const monthNumber = String(index + 1).padStart(2, "0");
+            const values = [];
+
+            for (let year = START_YEAR; year <= END_YEAR; year++) {
+              const value = result.rainfall[String(year) + monthNumber];
+              if (isValid(value)) values.push(Number(value));
+            }
+
+            if (values.length !== END_YEAR - START_YEAR + 1) {
+              throw new Error(
+                "Incomplete historical records for " + month
+              );
+            }
+
+            const average = values.reduce(
+              (sum, value) => sum + value, 0
+            ) / values.length;
+
+            return convertToMonthly(
+              average,
+              result.units,
+              index
+            );
+          });
+
+          return {
+            data,
+            period: "1991–2020",
+            apiUrl: result.apiUrl
+          };
+        } catch (error) {
+          console.error("HYDRIX rainfall backup failed:", error);
+          throw error;
+        }
       }
-      if (values.length !== END_YEAR - START_YEAR + 1) {
-        throw new Error(`Incomplete rainfall records for ${month}. Expected 30, received ${values.length}.`);
-      }
-      const average = values.reduce((sum, value) => sum + value, 0) / values.length;
-      return convertToMonthly(average, result.units, index);
-    });
-    console.info("HYDRIX: Historical rainfall backup loaded.", town.name);
-    return { data, period: "1991–2020", apiUrl: result.apiUrl };
-  } catch (error) {
-    console.error("HYDRIX: Both rainfall methods failed.", error);
-    throw new Error("NASA POWER rainfall data is unavailable. " + error.message);
-  }
-}
 
       function svgElement(name, attributes = {}, content = null) {
         const element = document.createElementNS(
@@ -1163,10 +1070,7 @@
           element.setAttribute(key, String(value));
         });
 
-        if (content !== null) {
-          element.textContent = content;
-        }
-
+        if (content !== null) element.textContent = content;
         return element;
       }
 
@@ -1180,18 +1084,14 @@
         rainChart.replaceChildren();
 
         rainChart.appendChild(
-          svgElement(
-            "title",
-            {},
+          svgElement("title", {},
             "Historical rainfall estimates for " + getTown(selectedId).name
           )
         );
 
         rainChart.appendChild(
-          svgElement(
-            "desc",
-            {},
-            "NASA POWER 1991 to 2020 monthly rainfall climatology. Exact displayed values are available in the data table."
+          svgElement("desc", {},
+            "NASA POWER 1991 to 2020 monthly rainfall climatology. Exact values are available in the table."
           )
         );
 
@@ -1200,10 +1100,7 @@
 
           rainChart.appendChild(
             svgElement("line", {
-              x1: 32,
-              y1: y,
-              x2: 416,
-              y2: y,
+              x1: 32, y1: y, x2: 416, y2: y,
               stroke: "#DBE4EB",
               "stroke-width": 1
             })
@@ -1211,8 +1108,7 @@
 
           rainChart.appendChild(
             svgElement("text", {
-              x: 1,
-              y: y + 4,
+              x: 1, y: y + 4,
               fill: "#849AAE",
               "font-size": 10
             }, String(Math.round(top * fraction)))
@@ -1227,18 +1123,13 @@
             x,
             y: baseline - height,
             width: 20,
-            height: Math.max(0.6, height),
+            height: Math.max(.6, height),
             rx: 2,
-            fill:
-              index >= 4 && index <= 9
-                ? "#4E7BB6"
-                : "#BBA787"
+            fill: index >= 4 && index <= 9 ? "#4E7BB6" : "#BBA787"
           });
 
           bar.appendChild(
-            svgElement(
-              "title",
-              {},
+            svgElement("title", {},
               monthLong[index] + ": " + value.toFixed(1) + " mm"
             )
           );
@@ -1246,17 +1137,13 @@
           rainChart.appendChild(bar);
 
           rainChart.appendChild(
-            svgElement(
-              "text",
-              {
-                x: x + 10,
-                y: 177,
-                fill: "#58758A",
-                "font-size": 9,
-                "text-anchor": "middle"
-              },
-              months[index]
-            )
+            svgElement("text", {
+              x: x + 10,
+              y: 177,
+              fill: "#58758A",
+              "font-size": 9,
+              "text-anchor": "middle"
+            }, months[index])
           );
         });
 
@@ -1264,11 +1151,10 @@
 
         values.forEach((value, index) => {
           const row = document.createElement("tr");
-
           const monthCell = document.createElement("td");
-          monthCell.textContent = monthLong[index];
-
           const valueCell = document.createElement("td");
+
+          monthCell.textContent = monthLong[index];
           valueCell.textContent = value.toFixed(1);
 
           row.append(monthCell, valueCell);
@@ -1280,9 +1166,8 @@
         rainSummary.textContent =
           "Highest estimated monthly average: " +
           monthLong[peak] +
-          " (" +
-          values[peak].toFixed(1) +
-          " mm). These are historical climatological estimates, not forecasts.";
+          " (" + values[peak].toFixed(1) +
+          " mm). These values describe historical rainfall, not a forecast.";
 
         rainStatus.textContent =
           "NASA POWER precipitation climatology, 1991–2020.";
@@ -1291,8 +1176,8 @@
 
         rainMethod.append(
           "Source: NASA POWER (1991–2020). " +
-          "Monthly amounts are estimated from gridded precipitation data, " +
-          "not local rain-gauge observations. "
+          "Values are gridded historical precipitation estimates, " +
+          "not direct local rain-gauge measurements. "
         );
 
         const link = document.createElement("a");
@@ -1307,9 +1192,7 @@
 
       async function loadRainfall() {
         const requestId = ++loadingToken;
-
         rainVisual.hidden = true;
-
         rainStatus.textContent =
           "Loading historical rainfall estimates from NASA POWER...";
 
@@ -1324,26 +1207,15 @@
             rainfallCache.set(town.id, result);
           }
 
-          if (
-            requestId !== loadingToken ||
-            rainPanel.hidden
-          ) {
-            return;
-          }
-
+          if (requestId !== loadingToken || rainPanel.hidden) return;
           renderRainfall(result);
         } catch (error) {
-          if (
-            requestId !== loadingToken ||
-            rainPanel.hidden
-          ) {
-            return;
-          }
+          if (requestId !== loadingToken || rainPanel.hidden) return;
 
           rainStatus.textContent =
-            "Rainfall data could not be loaded. Check your internet " +
-            "connection or consult NASA POWER. No values will " +
-            "be shown without data.";
+            "NASA POWER rainfall data is currently unavailable. " +
+            "Please try again later. No rainfall values will be " +
+            "displayed without verified data.";
 
           console.warn("HYDRIX rainfall:", error);
         }
@@ -1351,13 +1223,8 @@
 
       rainToggle.addEventListener("click", () => {
         const opening = rainPanel.hidden;
-
         rainPanel.hidden = !opening;
-
-        rainToggle.setAttribute(
-          "aria-expanded",
-          String(opening)
-        );
+        rainToggle.setAttribute("aria-expanded", String(opening));
 
         if (opening) {
           loadRainfall();
@@ -1367,10 +1234,7 @@
         }
       });
 
-      const seasonButtons = [
-        ...document.querySelectorAll(".dz-month")
-      ];
-
+      const seasonButtons = [...document.querySelectorAll(".dz-month")];
       const seasonFeedback = $("seasonFeedback");
 
       seasonButtons.forEach(button => {
@@ -1379,7 +1243,6 @@
 
           seasonButtons.forEach(item => {
             const active = item === button;
-
             item.classList.toggle("is-selected", active);
             item.setAttribute("aria-pressed", String(active));
           });
@@ -1398,24 +1261,18 @@
         "(prefers-reduced-motion: reduce)"
       );
 
-      if (
-        !reducedMotion.matches &&
-        "IntersectionObserver" in window
-      ) {
-        const observer = new IntersectionObserver(
-          entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          {
-            threshold: 0.06,
-            rootMargin: "0px 0px -15px 0px"
-          }
-        );
+      if (!reducedMotion.matches && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: .06,
+          rootMargin: "0px 0px -15px 0px"
+        });
 
         document.querySelectorAll("main .reveal").forEach(element => {
           observer.observe(element);
@@ -1434,7 +1291,7 @@
 
         const progress = Math.min(
           100,
-          Math.max(0, (window.scrollY / maximum) * 100)
+          Math.max(0, window.scrollY / maximum * 100)
         );
 
         document.body.style.setProperty(
@@ -1445,74 +1302,19 @@
         scrollFrame = 0;
       }
 
-      window.addEventListener(
-        "scroll",
-        () => {
-          if (!scrollFrame) {
-            scrollFrame = requestAnimationFrame(updateProgress);
-          }
-        },
-        { passive: true }
-      );
+      window.addEventListener("scroll", () => {
+        if (!scrollFrame) {
+          scrollFrame = requestAnimationFrame(updateProgress);
+        }
+      }, { passive: true });
 
-      window.addEventListener(
-        "resize",
-        updateProgress,
-        { passive: true }
-      );
+      window.addEventListener("resize", updateProgress, { passive: true });
 
       updateProgress();
-
-      const hero = document.querySelector(".dz-hero-stage");
-
-      const finePointer = window.matchMedia(
-        "(hover: hover) and (pointer: fine)"
-      );
-
-      if (
-        hero &&
-        finePointer.matches &&
-        !reducedMotion.matches
-      ) {
-        let lightFrame = 0;
-
-        hero.addEventListener(
-          "pointermove",
-          event => {
-            if (lightFrame) return;
-
-            const x = event.clientX;
-            const y = event.clientY;
-
-            lightFrame = requestAnimationFrame(() => {
-              const bounds = hero.getBoundingClientRect();
-
-              hero.style.setProperty(
-                "--light-x",
-                ((x - bounds.left) / bounds.width * 100) + "%"
-              );
-
-              hero.style.setProperty(
-                "--light-y",
-                ((y - bounds.top) / bounds.height * 100) + "%"
-              );
-
-              lightFrame = 0;
-            });
-          },
-          { passive: true }
-        );
-
-        hero.addEventListener("pointerleave", () => {
-          hero.style.setProperty("--light-x", "50%");
-          hero.style.setProperty("--light-y", "42%");
-        });
-      }
-
       fillTownSelect();
       initMap();
       updateTownProfile();
-
     })();
-  </script></body>
+  </script>
+</body>
 </html>
