@@ -1154,64 +1154,185 @@
 
        
 
-      async function requestRainfall(town) {
-        const url = new URL(
-          "https://power.larc.nasa.gov/api/temporal/monthly/climatology/point"
+      
+async function requestRainfall(town) {
+  const BASE_URL = "https://power.larc.nasa.gov/api/temporal/";
+  const START_YEAR = 1991;
+  const END_YEAR = 2020;
+
+  const params = {
+    parameters: "PRECTOTCORR",
+    community: "AG",
+    longitude: String(town.lon),
+    latitude: String(town.lat),
+    format: "JSON",
+    start: String(START_YEAR),
+    end: String(END_YEAR)
+  };
+
+  async function fetchNASA(endpoint) {
+    const url = new URL(BASE_URL + endpoint);
+    url.search = new URLSearchParams(params).toString();
+
+    const response = await fetch(url.toString());
+
+    if (!response.ok) {
+      throw new Error(
+        `NASA POWER returned HTTP ${response.status}`
+      );
+    }
+
+    const json = await response.json();
+
+    const rainfall =
+      json?.properties?.parameter?.PRECTOTCORR;
+
+    if (!rainfall || typeof rainfall !== "object") {
+      throw new Error("NASA POWER returned no rainfall data.");
+    }
+
+    const units =
+      json?.parameters?.PRECTOTCORR?.units || "";
+
+    if (!units) {
+      throw new Error("Rainfall units are missing.");
+    }
+
+    return {
+      rainfall,
+      units: units.toLowerCase().replace(/\s/g, ""),
+      apiUrl: url.toString()
+    };
+  }
+
+  function isValid(value) {
+    return (
+      value !== null &&
+      value !== undefined &&
+      value !== "" &&
+      Number.isFinite(Number(value)) &&
+      Number(value) >= 0
+    );
+  }
+
+  function convertToMonthly(value, unit, monthIndex) {
+    if (unit.includes("mm/day") || unit.includes("mm/d")) {
+      return value * monthLengths[monthIndex];
+    }
+
+    if (unit === "mm" || unit.includes("mm/month")) {
+      return value;
+    }
+
+    throw new Error("Unsupported rainfall unit: " + unit);
+  }
+
+  // METHOD 1: NASA POWER historical climatology
+  try {
+    const result = await fetchNASA(
+      "monthly/climatology/point"
+    );
+
+    const data = months.map((month, index) => {
+      const value = result.rainfall[month];
+
+      if (!isValid(value)) {
+        throw new Error(
+          "Missing climatology rainfall for " + month
         );
-
-        url.search = new URLSearchParams({
-          parameters: "PRECTOTCORR",
-          community: "AG",
-          longitude: String(town.lon),
-          latitude: String(town.lat),
-          format: "JSON",
-          start: "1991",
-          end: "2020"
-        }).toString();
-
-        const response = await fetch(url.toString());
-
-        if (!response.ok) {
-          throw new Error("NASA POWER HTTP " + response.status);
-        }
-
-        const json = await response.json();
-        const readings =
-          json?.properties?.parameter?.PRECTOTCORR;
-
-        if (!readings) {
-          throw new Error("Rainfall data was not returned.");
-        }
-
-        const unit =
-          json?.parameters?.PRECTOTCORR?.units || "mm/day";
-
-        const data = months.map((month, index) => {
-          const reading = Number(readings[month]);
-
-          if (
-            !Number.isFinite(reading) ||
-            reading < 0 ||
-            reading === -999
-          ) {
-            throw new Error("Incomplete rainfall data.");
-          }
-
-          const dailyUnit =
-            unit.toLowerCase().includes("mm/day") ||
-            unit.toLowerCase().includes("mm/d");
-
-          return dailyUnit
-            ? reading * monthLengths[index]
-            : reading;
-        });
-
-        return {
-          data,
-          period: "1991–2020",
-          apiUrl: url.toString()
-        };
       }
+
+      return convertToMonthly(
+        Number(value),
+        result.units,
+        index
+      );
+    });
+
+    console.info(
+      "HYDRIX: NASA climatology loaded successfully.",
+      town.name
+    );
+
+    return {
+      data,
+      period: "1991–2020",
+      apiUrl: result.apiUrl
+    };
+
+  } catch (error) {
+    console.warn(
+      "HYDRIX: Primary rainfall request failed.",
+      error
+    );
+  }
+
+  // METHOD 2: Use historical monthly records
+  try {
+    const result = await fetchNASA("monthly/point");
+
+    const data = months.map((month, index) => {
+      const monthNumber = String(index + 1).padStart(2, "0");
+      const values = [];
+
+      for (
+        let year = START_YEAR;
+        year <= END_YEAR;
+        year++
+      ) {
+        const key = `${year}${monthNumber}`;
+        const value = result.rainfall[key];
+
+        if (isValid(value)) {
+          values.push(Number(value));
+        }
+      }
+
+      const expectedCount = END_YEAR - START_YEAR + 1;
+
+      if (values.length !== expectedCount) {
+        throw new Error(
+          `Incomplete rainfall records for ${month}. ` +
+          `Expected ${expectedCount}, received ${values.length}.`
+        );
+      }
+
+      const average =
+        values.reduce((sum, value) => sum + value, 0) /
+        values.length;
+
+      return convertToMonthly(
+        average,
+        result.units,
+        index
+      );
+    });
+
+    console.info(
+      "HYDRIX: Historical rainfall backup loaded.",
+      town.name
+    );
+
+    return {
+      data,
+      period: "1991–2020",
+      apiUrl: result.apiUrl
+    };
+
+  } catch (error) {
+    console.error(
+      "HYDRIX: Both rainfall methods failed.",
+      error
+    );
+
+    throw new Error(
+      "NASA POWER rainfall data is unavailable. " +
+      "The primary and backup requests both failed. " +
+      error.message
+    );
+  }
+}
+
 
       function svgElement(name, attributes = {}, content = null) {
         const element = document.createElementNS(
